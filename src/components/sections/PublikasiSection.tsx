@@ -13,10 +13,12 @@ import { formatBeritaDate } from "@/lib/mock-data/berita";
 
 export function PublikasiSection() {
   const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: true,
     align: "start",
     slidesToScroll: 1,
   });
   const [selected, setSelected] = useState(0);
+  const [snapCount, setSnapCount] = useState(0);
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
@@ -26,6 +28,8 @@ export function PublikasiSection() {
   useEffect(() => {
     if (!emblaApi) return;
     emblaApi.on("select", onSelect);
+    emblaApi.on("reInit", onSelect);
+    setSnapCount(emblaApi.scrollSnapList().length);
     onSelect();
   }, [emblaApi, onSelect]);
 
@@ -44,7 +48,7 @@ export function PublikasiSection() {
               {publikasiList.map((doc) => (
                 <article
                   key={doc.id}
-                  className="min-w-0 flex-[0_0_100%] rounded-xl border border-mid-gray/30 bg-light-gray/30 p-5 shadow-sm sm:flex-[0_0_48%] lg:flex-[0_0_24%]"
+                  className="min-w-0 flex-[0_0_85%] rounded-xl border border-mid-gray/30 bg-light-gray/30 p-5 shadow-sm sm:flex-[0_0_48%] lg:flex-[0_0_32%]"
                 >
                   <div className="flex h-24 items-center justify-center rounded-lg bg-white">
                     <FileText className="h-12 w-12 text-error" strokeWidth={1.5} />
@@ -80,7 +84,7 @@ export function PublikasiSection() {
           <div className="mt-6 flex items-center justify-between">
             <CarouselArrow direction="prev" onClick={() => emblaApi?.scrollPrev()} />
             <CarouselDots
-              count={Math.max(1, publikasiList.length - 2)}
+              count={Math.max(1, snapCount)}
               selected={selected}
               onSelect={(i) => emblaApi?.scrollTo(i)}
             />
