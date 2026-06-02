@@ -1,11 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { Megaphone, Search, ShieldCheck, ArrowRight } from "lucide-react";
+import { Megaphone, Search, ShieldCheck, ArrowRight, CheckCircle2 } from "lucide-react";
 import { SectionShell } from "@/components/ui/SectionShell";
 import { Button } from "@/components/ui/button";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { AspirasiModal } from "@/components/floating/AspirasiModal";
+import { ASPIRASI_BULAN_INI } from "@/lib/mock-data/statistik";
 
 export function AspirasiSection() {
   const [open, setOpen] = useState(false);
@@ -39,6 +40,11 @@ export function AspirasiSection() {
               <p className="mt-3 flex items-center gap-2 text-xs text-white/75">
                 <ShieldCheck className="h-4 w-4 shrink-0 text-accent" />
                 Data NIK Anda dilindungi dan tidak dipublikasikan.
+              </p>
+              <p className="mt-3 inline-flex items-center gap-2 rounded-lg bg-white/10 px-3 py-1.5 text-xs font-medium text-white">
+                <CheckCircle2 className="h-4 w-4 text-success" />
+                {ASPIRASI_BULAN_INI.ditindaklanjuti} aspirasi ditindaklanjuti —{" "}
+                {ASPIRASI_BULAN_INI.bulan}
               </p>
             </div>
 
