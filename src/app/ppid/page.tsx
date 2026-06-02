@@ -63,6 +63,7 @@ function DocList({ items }: { items: { judul: string; tanggal: string }[] }) {
 
 export default function PpidPage() {
   const [tab, setTab] = useState<string>(PPID_TABS[0].id);
+  const [nikPermohonan, setNikPermohonan] = useState("");
 
   return (
     <PageContentBoundary>
@@ -101,6 +102,10 @@ export default function PpidPage() {
               placeholder="NIK (16 digit)"
               inputMode="numeric"
               maxLength={16}
+              value={nikPermohonan}
+              onChange={(e) =>
+                setNikPermohonan(e.target.value.replace(/\D/g, "").slice(0, 16))
+              }
               required
             />
             <input
