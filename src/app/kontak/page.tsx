@@ -24,6 +24,7 @@ export default function KontakPage() {
               <p className="mt-2">Kode Wilayah: {DESA.kodeWilayah}</p>
               <p className="mt-2">{DESA.telepon}</p>
               <p>{DESA.email}</p>
+              <p className="mt-2 text-sm">Jam pelayanan: {DESA.jamPelayanan}</p>
             </SectionCard>
           </FadeIn>
           <FadeIn>
