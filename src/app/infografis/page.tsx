@@ -9,6 +9,7 @@ import {
   PieChart,
   ResponsiveContainer,
   Tooltip,
+  Legend,
   XAxis,
   YAxis,
 } from "recharts";
@@ -153,6 +154,12 @@ export default function InfografisPage() {
                         ))}
                       </Pie>
                       <Tooltip />
+                      <Legend
+                        verticalAlign="bottom"
+                        align="center"
+                        iconType="circle"
+                        wrapperStyle={{ fontSize: 12, paddingTop: 8 }}
+                      />
                     </PieChart>
                   </ResponsiveContainer>
                 </div>
