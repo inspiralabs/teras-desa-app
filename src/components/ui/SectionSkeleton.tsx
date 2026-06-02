@@ -4,11 +4,14 @@ import { SectionShell } from "@/components/ui/SectionShell";
 export type SectionSkeletonVariant =
   | "hero"
   | "sambutan"
+  | "counter"
   | "aspirasi"
   | "berita"
   | "galeri"
   | "layanan"
+  | "layanan-detail"
   | "agenda"
+  | "umkm"
   | "publikasi"
   | "page";
 
@@ -75,6 +78,19 @@ export function SectionSkeleton({
         </Shell>
       );
 
+    case "counter":
+      return (
+        <Shell>
+          {errorNote}
+          <Skeleton className="mb-6 h-8 w-48" />
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {Array.from({ length: 4 }).map((_, i) => (
+              <Skeleton key={i} className="h-36 rounded-2xl" />
+            ))}
+          </div>
+        </Shell>
+      );
+
     case "aspirasi":
       return (
         <SectionShell variant="muted">
@@ -108,19 +124,28 @@ export function SectionSkeleton({
       return (
         <Shell>
           {errorNote}
-          <Skeleton className="mb-6 h-8 w-44" />
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {Array.from({ length: 4 }).map((_, i) => (
-              <Skeleton key={i} className="h-28 rounded-xl" />
-            ))}
-          </div>
-          <Skeleton className="my-6 h-6 w-full max-w-md mx-auto" />
-          <div className="grid gap-4 md:grid-cols-3">
-            {Array.from({ length: 3 }).map((_, i) => (
-              <Skeleton key={i} className="h-40 rounded-2xl" />
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <Skeleton key={i} className="h-44 rounded-2xl" />
             ))}
           </div>
         </Shell>
+      );
+
+    case "layanan-detail":
+      return (
+        <div className="space-y-6">
+          {errorNote}
+          <Skeleton className="h-10 w-full max-w-2xl rounded-lg" />
+          <Skeleton className="h-48 w-full rounded-xl" />
+          <Skeleton className="h-6 w-56" />
+          <div className="space-y-2">
+            <Skeleton className="h-10 w-full rounded-lg" />
+            <Skeleton className="h-10 w-full rounded-lg" />
+            <Skeleton className="h-10 w-2/3 rounded-lg" />
+          </div>
+          <Skeleton className="h-40 w-full rounded-xl" />
+        </div>
       );
 
     case "agenda":
@@ -135,6 +160,19 @@ export function SectionSkeleton({
               <Skeleton className="h-28 rounded-xl" />
               <Skeleton className="h-28 rounded-xl" />
             </div>
+          </div>
+        </Shell>
+      );
+
+    case "umkm":
+      return (
+        <Shell muted>
+          {errorNote}
+          <Skeleton className="mb-6 h-8 w-40" />
+          <div className="flex gap-4 overflow-hidden">
+            {Array.from({ length: 4 }).map((_, i) => (
+              <Skeleton key={i} className="h-64 w-[220px] shrink-0 rounded-xl" />
+            ))}
           </div>
         </Shell>
       );
