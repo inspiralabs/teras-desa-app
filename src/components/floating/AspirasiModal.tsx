@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Upload } from "lucide-react";
 import { AnimatedModal } from "@/components/motion/AnimatedModal";
 import { Button } from "@/components/ui/button";
@@ -23,6 +23,7 @@ export function AspirasiModal({
   onClose: () => void;
 }) {
   const fileRef = useRef<HTMLInputElement>(null);
+  const [nik, setNik] = useState("");
 
   return (
     <AnimatedModal open={open} onClose={onClose} title="Aspirasi Warga">
@@ -40,6 +41,8 @@ export function AspirasiModal({
             placeholder="NIK (16 digit)"
             maxLength={16}
             inputMode="numeric"
+            value={nik}
+            onChange={(e) => setNik(e.target.value.replace(/\D/g, "").slice(0, 16))}
             required
           />
           <p className="mt-1 text-xs text-dark-gray">
