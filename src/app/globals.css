@@ -3,10 +3,10 @@
 :root {
   --background: #f2f3f4;
   --foreground: #1a252f;
-  --primary: #1b4f72;
-  --secondary: #2e86c1;
+  --primary: #2f6f4e;
+  --secondary: #55816a;
   --accent: #f39c12;
-  --light: #d6eaf8;
+  --light: #e8f5ee;
   --light-gray: #f2f3f4;
   --mid-gray: #bdc3c7;
   --dark-gray: #566573;
@@ -14,7 +14,7 @@
   --error: #922b21;
   --whatsapp: #25d366;
   --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.08);
-  --shadow-card-hover: 0 8px 24px rgba(27, 79, 114, 0.12);
+  --shadow-card-hover: 0 8px 24px rgba(47, 111, 78, 0.12);
 }
 
 @theme inline {
@@ -57,4 +57,13 @@ body.splash-active #sigap-splash-placeholder {
 
 #sigap-splash-placeholder {
   display: none;
+}
+
+@keyframes ticker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
