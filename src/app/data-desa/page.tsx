@@ -29,7 +29,7 @@ const pekerjaan = [
   { name: "PNS/TNI/Polri", jumlah: 95 },
 ];
 
-const COLORS = ["#1B4F72", "#2E86C1", "#F39C12", "#1E8449"];
+const COLORS = ["#2F6F4E", "#55816A", "#F39C12", "#1E8449"];
 
 export default function DataDesaPage() {
   return (
@@ -66,7 +66,7 @@ export default function DataDesaPage() {
                     <XAxis type="number" />
                     <YAxis dataKey="name" type="category" width={100} tick={{ fontSize: 12 }} />
                     <Tooltip />
-                    <Bar dataKey="jumlah" fill="#1B4F72" radius={[0, 4, 4, 0]} />
+                    <Bar dataKey="jumlah" fill="#2F6F4E" radius={[0, 4, 4, 0]} />
                   </BarChart>
                 </ResponsiveContainer>
               </div>
