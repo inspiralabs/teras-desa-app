@@ -56,7 +56,7 @@ export default function InfografisPage() {
     <PageContentBoundary>
       <PageHero
         title="Infografis"
-        description="Visualisasi data statistik Desa Bojongkulur — mock data PRD v2 §4.4"
+        description="Visualisasi data statistik Desa Bojongkulur — mock data"
       />
       <SectionShell className="pt-0">
         <TabShell tabs={INFOGRAFIS_TABS} active={tab} onChange={setTab} />
