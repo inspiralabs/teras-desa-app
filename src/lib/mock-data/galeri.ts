@@ -6,6 +6,9 @@ const JUDUL = [
   "UMKM dan ekonomi kreatif lokal",
   "Mitigasi Bencana Alam",
   "Wisata Susur Sungai Bojongkulur",
+  "Aspirasi Warga Desa",
+  "Potensi Wisata Desa",
+  "Polling Pembangunan Desa",
 ];
 
 export type GaleriItem = {
