@@ -20,7 +20,7 @@ const ITEMS = [
     color: "bg-secondary/10 text-secondary",
   },
   {
-    href: "/data-desa",
+    href: "/apbdes",
     label: "Publikasi Desa",
     desc: "Laporan keuangan dan program kerja",
     icon: FileText,

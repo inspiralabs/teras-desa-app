@@ -29,6 +29,7 @@ export function AdminKependudukanTab() {
   const [dateFrom, setDateFrom] = useState("");
   const [dateTo, setDateTo] = useState("");
   const [preview, setPreview] = useState<DokumenPengajuan | null>(null);
+  const [nikForm, setNikForm] = useState("");
 
   const filtered = useMemo(() => {
     const q = search.trim().toLowerCase();
@@ -181,6 +182,10 @@ export function AdminKependudukanTab() {
               maxLength={16}
               inputMode="numeric"
               pattern="\d{16}"
+              value={nikForm}
+              onChange={(e) =>
+                setNikForm(e.target.value.replace(/\D/g, "").slice(0, 16))
+              }
               placeholder="16 digit NIK"
               required
             />
