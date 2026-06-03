@@ -39,7 +39,7 @@ export function PublikasiSection() {
         <SectionHeader
           title="Publikasi Desa"
           subtitle="Menyajikan publikasi kinerja dan perencanaan Pemerintah Desa Bojongkulur."
-          href="/data-desa"
+          href="/infografis"
           linkLabel="Lihat Semua Laporan"
         />
         <SectionCard className="relative">

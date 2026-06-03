@@ -1,6 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
-import { DESA, FOOTER_QUICK_LINKS } from "@/lib/constants";
+import {
+  DESA,
+  FOOTER_QUICK_LINKS_COL1,
+  FOOTER_QUICK_LINKS_COL2,
+} from "@/lib/constants";
 import { IMAGES } from "@/lib/images";
 
 export function Footer() {
@@ -25,15 +29,26 @@ export function Footer() {
         </div>
         <div>
           <p className="font-semibold">Tautan Cepat</p>
-          <ul className="mt-3 space-y-2 text-sm text-white/85">
-            {FOOTER_QUICK_LINKS.map((item) => (
-              <li key={item.href}>
-                <Link href={item.href} className="hover:underline">
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <div className="mt-3 grid grid-cols-2 gap-x-8 gap-y-2 text-sm text-white/85">
+            <ul className="space-y-2">
+              {FOOTER_QUICK_LINKS_COL1.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className="hover:text-white hover:underline">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <ul className="space-y-2">
+              {FOOTER_QUICK_LINKS_COL2.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className="hover:text-white hover:underline">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
         <div>
           <p className="font-semibold">Pemerintah Desa {DESA.nama}</p>
@@ -60,7 +75,6 @@ export function Footer() {
             rel="noopener noreferrer"
             className="mt-2 inline-block text-sm underline"
           >
-            Petunjuk Arah
           </a>
         </div>
       </div>

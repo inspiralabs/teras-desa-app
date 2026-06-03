@@ -9,7 +9,10 @@ import {
   UMKM_KATEGORI,
   UMKM_PAGE_SIZE,
   umkmProdukList,
+  umkmTokoList,
+  type UmkmToko,
 } from "@/lib/mock-data/umkm";
+import { UmkmTokoDetailModal } from "@/components/layanan/UmkmTokoDetailModal";
 import { formatRupiah, inputClassName, isUmkmOpen } from "@/lib/layanan-utils";
 import { cn } from "@/lib/utils";
 
@@ -17,6 +20,16 @@ export function UmkmDesaTab() {
   const [kategori, setKategori] = useState<string>("Semua");
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
+  const [tokoModal, setTokoModal] = useState<UmkmToko | null>(null);
+
+  const openToko = (tokoId: string) => {
+    const t = umkmTokoList.find((x) => x.id === tokoId);
+    if (t) setTokoModal(t);
+  };
+
+  const produkTokoModal = tokoModal
+    ? umkmProdukList.filter((p) => p.tokoId === tokoModal.id)
+    : [];
 
   const filtered = useMemo(() => {
     const q = search.trim().toLowerCase();
@@ -121,9 +134,13 @@ export function UmkmDesaTab() {
                     <p className="mt-1.5 line-clamp-2 text-sm font-semibold text-primary">
                       {p.namaProduk}
                     </p>
-                    <p className="mt-0.5 text-xs font-medium text-secondary">
+                    <button
+                      type="button"
+                      onClick={() => openToko(p.tokoId)}
+                      className="mt-0.5 text-left text-xs font-medium text-secondary underline-offset-2 hover:text-primary hover:underline"
+                    >
                       {p.namaToko}
-                    </p>
+                    </button>
                     <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-dark-gray">
                       {p.deskripsi}
                     </p>
@@ -180,6 +197,12 @@ export function UmkmDesaTab() {
           )}
         </>
       )}
+      <UmkmTokoDetailModal
+        toko={tokoModal}
+        produk={produkTokoModal}
+        open={!!tokoModal}
+        onClose={() => setTokoModal(null)}
+      />
     </div>
   );
 }
