@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getBeritaBySlug, formatBeritaDate } from "@/lib/mock-data/berita";
+import { BeritaDetailActions } from "@/components/kegiatan/BeritaDetailActions";
 import { PageContentBoundary } from "@/components/layout/PageContentBoundary";
 import { SectionShell, SectionCard } from "@/components/ui/SectionShell";
 
@@ -50,6 +51,7 @@ export default async function BeritaDetailPage({
             {berita.ringkasan} Konten artikel lengkap akan diisi melalui CMS admin
             pada integrasi backend.
           </p>
+          <BeritaDetailActions berita={berita} />
         </SectionCard>
       </article>
     </SectionShell>
