@@ -13,7 +13,7 @@ const ITEMS = [
     color: "bg-primary/10 text-primary",
   },
   {
-    href: "/data-desa",
+    href: "/infografis?tab=data-desa",
     label: "Data Desa",
     desc: "Statistik dan visualisasi data desa",
     icon: BarChart3,

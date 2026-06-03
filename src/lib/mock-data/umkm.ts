@@ -9,6 +9,11 @@ export type UmkmToko = {
   namaToko: string;
   kategori: string;
   tagline: string;
+  deskripsi: string;
+  alamat: string;
+  lat: number;
+  lng: number;
+  gambarToko: string;
   whatsapp: string;
   bukaJam: string;
   tutupJam: string;
@@ -148,7 +153,17 @@ type ProdukInput = {
   gambar: string;
 };
 
-type TokoInput = Omit<UmkmToko, "id"> & { produk: ProdukInput[] };
+type TokoInput = Omit<
+  UmkmToko,
+  "id" | "deskripsi" | "alamat" | "lat" | "lng" | "gambarToko"
+> & {
+  deskripsi?: string;
+  alamat?: string;
+  lat?: number;
+  lng?: number;
+  gambarToko?: string;
+  produk: ProdukInput[];
+};
 
 const KATALOG: TokoInput[] = [
   {
@@ -861,7 +876,19 @@ function buildCatalog(): { toko: UmkmToko[]; produk: UmkmProduk[] } {
     const tokoId = String(ti + 1);
     const { produk: items, ...tokoData } = entry;
 
-    toko.push({ id: tokoId, ...tokoData });
+    toko.push({
+      id: tokoId,
+      ...tokoData,
+      deskripsi:
+        tokoData.deskripsi ??
+        `${tokoData.tagline}. Melayani warga Desa Bojongkulur dengan produk dan layanan berkualitas.`,
+      alamat:
+        tokoData.alamat ??
+        `Jl. Raya Bojongkulur No. ${10 + ti}, Desa Bojongkulur, Kec. Gunungputri`,
+      lat: tokoData.lat ?? -6.3229 - ti * 0.002,
+      lng: tokoData.lng ?? 106.9689 + ti * 0.001,
+      gambarToko: tokoData.gambarToko ?? items[0]?.gambar ?? IMG.nasiUduk,
+    });
 
     items.forEach((item, pi) => {
       produk.push({

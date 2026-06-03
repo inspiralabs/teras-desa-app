@@ -25,7 +25,6 @@ export const HERO_TAGLINE =
 export const DESA_KAMI_SUBMENU = [
   { href: "/desa-kami", label: "Profil Desa" },
   { href: "/lembaga-desa", label: "Lembaga Desa" },
-  { href: "/data-desa", label: "Data Desa" },
   { href: "/produk-hukum", label: "Produk Hukum" },
   { href: "/apbdes", label: "APBDes" },
 ] as const;
@@ -43,16 +42,25 @@ export const NAV_ITEMS = [
   { href: "/kontak", label: "Kontak" },
 ] as const;
 
-/** Footer quick links PRD v2 §4.11 */
-export const FOOTER_QUICK_LINKS = [
+/** Footer quick links — kolom 1 & 2 */
+export const FOOTER_QUICK_LINKS_COL1 = [
   { href: "/", label: "Beranda" },
   { href: "/desa-kami", label: "Desa Kami" },
   { href: "/layanan", label: "Layanan" },
   { href: "/infografis", label: "Infografis" },
+] as const;
+
+export const FOOTER_QUICK_LINKS_COL2 = [
   { href: "/ppid", label: "PPID" },
   { href: "/kegiatan", label: "Kegiatan" },
-  { href: "/polling-aspirasi", label: "Polling & Aspirasi" },
+  { href: "/polling-aspirasi", label: "Polling" },
   { href: "/kontak", label: "Kontak" },
+] as const;
+
+/** @deprecated gunakan FOOTER_QUICK_LINKS_COL1 + COL2 */
+export const FOOTER_QUICK_LINKS = [
+  ...FOOTER_QUICK_LINKS_COL1,
+  ...FOOTER_QUICK_LINKS_COL2,
 ] as const;
 
 /** PRD v2 §4.1.1 — pencarian populer */
@@ -73,7 +81,7 @@ export const LAYANAN_TABS = [
 ] as const;
 
 export const INFOGRAFIS_TABS = [
-  { id: "penduduk", label: "Penduduk" },
+  { id: "data-desa", label: "Data Desa" },
   { id: "apbdes", label: "APBDes" },
   { id: "stunting", label: "Stunting" },
   { id: "bansos", label: "Bansos" },
