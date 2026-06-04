@@ -28,7 +28,6 @@ export function BeritaHeadlineSidebar({
   footerLabel?: string;
   tabOrder?: readonly BeritaSidebarTab[];
 }) {
-  const panelTitle = tab === "populer" ? "Terpopuler" : "Terbaru";
   const footerText =
     footerLabel ??
     (tab === "populer" ? "Terpopuler lainnya" : "Lihat semua berita");
