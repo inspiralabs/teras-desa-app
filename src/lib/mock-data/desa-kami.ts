@@ -1,6 +1,8 @@
 /** Mock data portal Desa Kami — PRD v2 §4.3 */
 
 import { IMAGES } from "@/lib/images";
+import { BOJONGKULUR_CENTER } from "@/lib/mock-data/bojongkulur-boundary";
+import { BESTIE_KONDISI_UMUM, BESTIE_META } from "@/lib/mock-data/bestie-prodeskel";
 
 export const DESA_BANNER = IMAGES.kantorDesa[0];
 
@@ -15,10 +17,11 @@ export const BATAS_WILAYAH = {
 } as const;
 
 export const DESA_GPS = {
-  lat: -6.3229,
-  lng: 106.9689,
-  luasHa: 185.42,
-  label: "6°19'22.4\"S 106°58'08.1\"E",
+  lat: BOJONGKULUR_CENTER.lat,
+  lng: BOJONGKULUR_CENTER.lng,
+  luasHa: BESTIE_KONDISI_UMUM.luasHa,
+  label: `${Math.abs(BOJONGKULUR_CENTER.lat).toFixed(4)}°S ${BOJONGKULUR_CENTER.lng.toFixed(4)}°E`,
+  klasifikasi: BESTIE_META.klasifikasi,
 } as const;
 
 export const SEJARAH_DESA = `Desa Bojongkulur berdiri sejak masa kolonial sebagai pemukiman agraris di pinggiran aliran Sungai Cikeas. Nama "Bojongkulur" dipercaya berasal dari hutan bambu (bojong) yang rimbun dan tanah subur (kulur) yang menjadi pusat pertanian warga.

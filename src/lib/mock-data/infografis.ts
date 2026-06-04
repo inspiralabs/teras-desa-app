@@ -1,9 +1,21 @@
-/** Mock data halaman Infografis — PRD §4.4 */
+/** Mock data halaman Infografis — PRD §4.4 + sinkron Bestie Kab. Bogor */
+
+import {
+  BESTIE_AGAMA,
+  BESTIE_JENIS_KELAMIN,
+  BESTIE_KONDISI_UMUM,
+  BESTIE_META,
+  BESTIE_PEKERJAAN,
+  BESTIE_PENDIDIKAN,
+  BESTIE_STATUS_PERKAWINAN,
+} from "@/lib/mock-data/bestie-prodeskel";
 
 export const INFOGRAFIS_META = {
-  sumberDefault: "Disdukcapil & Data Statistik Desa Bojongkulur",
-  diperbarui: "3 Juni 2026",
+  sumberDefault: BESTIE_META.sumber,
+  diperbarui: `Data ${BESTIE_META.diperbarui}`,
 } as const;
+
+export const KONDISI_UMUM = BESTIE_KONDISI_UMUM;
 
 export const CHART_COLORS = [
   "#2F6F4E",
@@ -21,33 +33,13 @@ export const WILAYAH_ADMIN = [
   { dusun: "Dusun IV", rt: 5, rw: 1, kk: 567, jiwa: 1847 },
 ] as const;
 
-export const PENDIDIKAN_KK = [
-  { name: "Belum sekolah", value: 420 },
-  { name: "SD", value: 2100 },
-  { name: "SMP", value: 1850 },
-  { name: "SMA/SMK", value: 1420 },
-  { name: "Diploma/S1+", value: 680 },
-] as const;
+export const PENDIDIKAN_KK = BESTIE_PENDIDIKAN;
 
-export const PEKERJAAN = [
-  { name: "Wiraswasta", jumlah: 420 },
-  { name: "Karyawan", jumlah: 380 },
-  { name: "PNS/TNI/Polri", jumlah: 95 },
-  { name: "Petani", jumlah: 210 },
-  { name: "Lainnya", jumlah: 145 },
-] as const;
+export const PEKERJAAN = BESTIE_PEKERJAAN;
 
-export const AGAMA = [
-  { name: "Islam", value: 85 },
-  { name: "Kristen", value: 8 },
-  { name: "Katolik", value: 5 },
-  { name: "Lainnya", value: 2 },
-] as const;
+export const AGAMA = BESTIE_AGAMA;
 
-export const JENIS_KELAMIN = [
-  { name: "Laki-laki", value: 6314 },
-  { name: "Perempuan", value: 6173 },
-] as const;
+export const JENIS_KELAMIN = BESTIE_JENIS_KELAMIN;
 
 export const KELOMPOK_USIA = [
   { range: "0–4", jumlah: 890 },
@@ -68,11 +60,7 @@ export const KELOMPOK_USIA = [
   { range: "75+", jumlah: 282 },
 ] as const;
 
-export const STATUS_PERKAWINAN = [
-  { name: "Belum Menikah", value: 28 },
-  { name: "Menikah", value: 62 },
-  { name: "Cerai", value: 10 },
-] as const;
+export const STATUS_PERKAWINAN = BESTIE_STATUS_PERKAWINAN;
 
 export const DPT = {
   total: 9842,
@@ -85,10 +73,10 @@ export const DPT = {
 } as const;
 
 export const PENDUDUK_KPI = {
-  totalPenduduk: 12487,
-  kepalaKeluarga: 3892,
-  lakiLaki: 6314,
-  perempuan: 6173,
+  totalPenduduk: BESTIE_KONDISI_UMUM.jumlahPenduduk,
+  kepalaKeluarga: BESTIE_KONDISI_UMUM.jumlahKeluarga,
+  lakiLaki: BESTIE_JENIS_KELAMIN[0].value,
+  perempuan: BESTIE_JENIS_KELAMIN[1].value,
 } as const;
 
 export const APBDES_RINGKASAN = [

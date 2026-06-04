@@ -30,7 +30,7 @@ export function WisataBookingForm() {
   const [kategori, setKategori] = useState<"perorangan" | "kelompok">("perorangan");
   const [tanggal, setTanggal] = useState<Date | undefined>();
   const [slotId, setSlotId] = useState<string | null>(null);
-  const [peserta, setPeserta] = useState(2);
+  const [pesertaInput, setPesertaInput] = useState("2");
   const [agreed, setAgreed] = useState(false);
   const [scheduleError, setScheduleError] = useState<string | null>(null);
 
@@ -53,6 +53,8 @@ export function WisataBookingForm() {
 
   const slot = SLOT_KEBERANGKATAN.find((s) => s.id === slotId);
   const maxPeserta = slot?.tersedia ?? WISATA_INFO.kapasitasPerSlot;
+  const peserta =
+    pesertaInput === "" ? 0 : Math.min(maxPeserta, parseInt(pesertaInput, 10) || 0);
 
   const disabledDays = useMemo(
     () => TANGGAL_PENUH.map((d) => new Date(d + "T12:00:00")),
@@ -240,16 +242,33 @@ export function WisataBookingForm() {
           <WisataFormField label="Jumlah peserta" id="peserta">
             <input
               id="peserta"
-              type="number"
-              min={1}
-              max={maxPeserta}
-              value={peserta}
+              type="text"
+              inputMode="numeric"
+              autoComplete="off"
+              placeholder="1"
+              value={pesertaInput}
               onChange={(e) => {
-                setPeserta(Number(e.target.value));
+                const digits = e.target.value.replace(/\D/g, "");
+                if (digits === "") {
+                  setPesertaInput("");
+                  setScheduleError(null);
+                  return;
+                }
+                const n = Math.min(maxPeserta, parseInt(digits, 10));
+                setPesertaInput(String(n));
                 setScheduleError(null);
               }}
+              onBlur={() => {
+                if (pesertaInput === "" || peserta < 1) {
+                  setPesertaInput("1");
+                }
+              }}
               className={wisataInputClass()}
+              aria-describedby="peserta-hint"
             />
+            <p id="peserta-hint" className="mt-1 text-xs text-dark-gray">
+              Maks. {maxPeserta} orang untuk slot ini
+            </p>
           </WisataFormField>
 
           <WisataFormField

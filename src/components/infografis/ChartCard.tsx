@@ -34,7 +34,7 @@ export function ChartCard({
         className
       )}
     >
-      <div className="flex items-start justify-between gap-3">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div className="min-w-0 flex-1">
           <h3 className="text-base font-bold text-primary md:text-lg">{title}</h3>
           {subtitle ? (

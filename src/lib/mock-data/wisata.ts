@@ -28,7 +28,7 @@ export const WISATA_INFO = {
   titikAwal: "Dermaga Desa Bojongkulur (dekat Kantor Desa)",
   titikAkhir: "Muara ke area pertanian Dusun IV",
   mapsEmbed:
-    "https://maps.google.com/maps?q=-6.3185,106.9720&hl=id&z=14&output=embed",
+    "https://maps.google.com/maps?q=-6.322926,106.968984&hl=id&z=15&output=embed",
   kapasitasPerSlot: 10,
   jumlahPerahu: 6,
   jadwal: "Senin–Minggu, 08.00–16.00 WIB (kecuali hujan deras)",
@@ -41,7 +41,7 @@ export const WISATA_INFO = {
   googleReviewCount: 86,
   googleMapsUrl:
     "https://www.google.com/maps/search/?api=1&query=Susur+Sungai+Cikeas+Desa+Bojongkulur",
-  youtubeId: "dQw4w9WgXcQ",
+  youtubeId: "5vwz10-NcN4",
 } as const;
 
 /** Tanggal penuh (YYYY-MM-DD) — mock anti-overbooking */

@@ -15,6 +15,7 @@ import {
   type DokumenPengajuan,
   type StatusDokumen,
 } from "@/lib/mock-data/layanan";
+import { LayananDateFilter } from "@/components/layanan/LayananDateFilter";
 import {
   formatTanggalWaktu,
   inputClassName,
@@ -69,45 +70,47 @@ export function AdminKependudukanTab() {
         </Button>
       </div>
 
-      <div className="flex flex-col gap-3 lg:flex-row lg:flex-wrap lg:items-end">
-        <div className="relative w-full lg:max-w-xs">
+      <div className="grid gap-3 sm:grid-cols-2 lg:flex lg:flex-wrap lg:items-end">
+        <div className="relative w-full sm:col-span-2 lg:max-w-xs">
           <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-dark-gray" />
           <input
-            className={`${inputClassName} pl-10`}
+            className={`${inputClassName} min-h-11 pl-10 text-base md:text-sm`}
             placeholder="Cari nama pemohon..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             aria-label="Cari nama pemohon"
           />
         </div>
-        <select
-          className={`${inputClassName} lg:w-56`}
-          value={statusFilter}
-          onChange={(e) =>
-            setStatusFilter(e.target.value as StatusDokumen | "")
-          }
-          aria-label="Filter status"
-        >
-          <option value="">Semua Status</option>
-          {STATUS_DOKUMEN_OPTIONS.map((s) => (
-            <option key={s} value={s}>
-              {s}
-            </option>
-          ))}
-        </select>
-        <input
-          type="date"
-          className={`${inputClassName} lg:w-44`}
+        <label className="flex w-full min-w-0 flex-col gap-1 lg:w-56">
+          <span className="text-xs font-medium text-dark-gray">Status</span>
+          <select
+            className={`${inputClassName} min-h-11 text-base md:text-sm`}
+            value={statusFilter}
+            onChange={(e) =>
+              setStatusFilter(e.target.value as StatusDokumen | "")
+            }
+            aria-label="Filter status"
+          >
+            <option value="">Semua Status</option>
+            {STATUS_DOKUMEN_OPTIONS.map((s) => (
+              <option key={s} value={s}>
+                {s}
+              </option>
+            ))}
+          </select>
+        </label>
+        <LayananDateFilter
+          id="filter-date-from"
+          label="Dari tanggal"
           value={dateFrom}
-          onChange={(e) => setDateFrom(e.target.value)}
-          aria-label="Filter tanggal dari"
+          onChange={setDateFrom}
         />
-        <input
-          type="date"
-          className={`${inputClassName} lg:w-44`}
+        <LayananDateFilter
+          id="filter-date-to"
+          label="Sampai tanggal"
           value={dateTo}
-          onChange={(e) => setDateTo(e.target.value)}
-          aria-label="Filter tanggal sampai"
+          onChange={setDateTo}
+          min={dateFrom || undefined}
         />
       </div>
 
