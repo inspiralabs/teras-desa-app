@@ -7,7 +7,6 @@ import "leaflet/dist/leaflet.css";
 import {
   BOJONGKULUR_BOUNDARY,
   BOJONGKULUR_CENTER,
-  BOJONGKULUR_BOUNDARY_META,
 } from "@/lib/mock-data/bojongkulur-boundary";
 import { DESA_POI_MARKERS } from "@/lib/mock-data/bestie-prodeskel";
 

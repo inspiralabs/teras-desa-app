@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { SectionCard } from "@/components/ui/SectionShell";
-import { CarouselArrow, CarouselDots } from "@/components/ui/CarouselControls";
+import { CarouselDots } from "@/components/ui/CarouselControls";
 import { Pagination } from "@/components/ui/Pagination";
 import { BeritaHeadlineSlide } from "@/components/berita/BeritaHeadlineSlide";
 import { BeritaGridTile } from "@/components/berita/BeritaGridTile";
