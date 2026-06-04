@@ -65,27 +65,47 @@ export function DesaKamiProfilPage() {
             title="Peta & Wilayah Desa"
             description="Letak geografis, luas lahan, dan batas administrasi Desa Bojongkulur."
           >
+            <div className="mb-4 inline-flex rounded-lg bg-accent/20 px-4 py-2 text-sm font-semibold text-primary">
+              Klasifikasi: {DESA_GPS.klasifikasi}
+            </div>
             <DesaKamiMap />
 
-            <div className="mt-6 grid gap-4 sm:grid-cols-2">
-              <div className="flex gap-3 rounded-xl border border-primary/15 bg-light p-4">
-                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden />
-                <div>
+            <div className="mt-6 grid gap-3 sm:grid-cols-2">
+              <div className="flex gap-3 rounded-xl border border-primary/15 bg-gradient-to-br from-primary/5 to-white p-4 shadow-sm">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+                  <MapPin className="h-5 w-5 text-primary" aria-hidden />
+                </span>
+                <div className="min-w-0">
                   <p className="text-xs font-semibold uppercase tracking-wide text-dark-gray">
-                    Koordinat GPS
+                    Koordinat GPS (pusat desa)
                   </p>
-                  <p className="mt-1 text-sm font-medium text-primary">{DESA_GPS.label}</p>
+                  <p className="mt-1 font-mono text-sm font-semibold text-primary">
+                    {DESA_GPS.label}
+                  </p>
+                  <a
+                    href="https://maps.app.goo.gl/caM2yqrXHX57BzVa7"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-2 inline-block text-xs font-medium text-secondary hover:underline"
+                  >
+                    Buka di Google Maps
+                  </a>
                 </div>
               </div>
-              <div className="flex gap-3 rounded-xl border border-primary/15 bg-light p-4">
-                <Ruler className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden />
+              <div className="flex gap-3 rounded-xl border border-secondary/20 bg-gradient-to-br from-secondary/5 to-white p-4 shadow-sm">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-secondary/10">
+                  <Ruler className="h-5 w-5 text-secondary" aria-hidden />
+                </span>
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-wide text-dark-gray">
                     Luas Wilayah
                   </p>
-                  <p className="mt-1 text-sm font-medium text-primary">
-                    {DESA_GPS.luasHa} hektar
+                  <p className="mt-1 text-2xl font-bold text-primary tabular-nums">
+                    {DESA_GPS.luasHa.toLocaleString("id-ID", {
+                      maximumFractionDigits: 2,
+                    })}
                   </p>
+                  <p className="text-xs text-dark-gray">hektar (Bestie 2024)</p>
                 </div>
               </div>
             </div>

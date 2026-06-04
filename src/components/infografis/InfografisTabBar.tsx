@@ -25,7 +25,7 @@ export function InfografisTabBar({
 
   return (
     <div
-      className="sticky top-16 z-20 -mx-4 border-b border-mid-gray/30 bg-white/95 px-4 py-3 backdrop-blur md:top-[4.5rem] md:-mx-6 md:px-6"
+      className="sticky top-16 z-20 -mx-4 border-b border-mid-gray/30 bg-white/95 px-4 py-3 backdrop-blur supports-[backdrop-filter]:bg-white/90 md:top-[4.5rem] md:-mx-6 md:px-6"
       role="tablist"
       aria-label="Kategori infografis"
     >

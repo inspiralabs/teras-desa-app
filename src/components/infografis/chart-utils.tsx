@@ -21,7 +21,7 @@ import { CHART_COLORS } from "@/lib/mock-data/infografis";
 export function ChartShell({
   children,
   className,
-  heightClass = "h-[220px] md:h-[260px]",
+  heightClass = "h-[200px] sm:h-[220px] md:h-[260px]",
 }: {
   children: React.ReactNode;
   className?: string;
@@ -54,8 +54,8 @@ export function DonutChart({
           nameKey={nameKey}
           cx="50%"
           cy="45%"
-          innerRadius={50}
-          outerRadius={78}
+          innerRadius="40%"
+          outerRadius="65%"
         >
           {data.map((_, i) => (
             <Cell key={i} fill={CHART_COLORS[i % CHART_COLORS.length]} />
@@ -91,7 +91,7 @@ export function PieChartSimple({
           nameKey={nameKey}
           cx="50%"
           cy="45%"
-          outerRadius={78}
+          outerRadius="65%"
         >
           {data.map((_, i) => (
             <Cell key={i} fill={CHART_COLORS[i % CHART_COLORS.length]} />
@@ -120,13 +120,17 @@ export function HorizontalBarChart({
 }) {
   return (
     <ChartShell>
-      <BarChart data={[...data]} layout="vertical" margin={{ left: 4, right: 8 }}>
-        <XAxis type="number" tick={{ fontSize: 11 }} />
+      <BarChart
+        data={[...data]}
+        layout="vertical"
+        margin={{ left: 4, right: 8, top: 4, bottom: 4 }}
+      >
+        <XAxis type="number" tick={{ fontSize: 10 }} />
         <YAxis
           dataKey={nameKey}
           type="category"
-          width={96}
-          tick={{ fontSize: 11 }}
+          width={72}
+          tick={{ fontSize: 10 }}
         />
         <Tooltip />
         <Bar dataKey={dataKey} fill="#2F6F4E" radius={[0, 4, 4, 0]} />
@@ -148,9 +152,16 @@ export function VerticalBarChart({
 }) {
   return (
     <ChartShell>
-      <BarChart data={[...data]}>
-        <XAxis dataKey={xKey} tick={{ fontSize: 11 }} />
-        <YAxis tick={{ fontSize: 11 }} />
+      <BarChart data={[...data]} margin={{ bottom: 8, left: 0, right: 8 }}>
+        <XAxis
+          dataKey={xKey}
+          tick={{ fontSize: 10 }}
+          interval={0}
+          angle={-25}
+          textAnchor="end"
+          height={56}
+        />
+        <YAxis tick={{ fontSize: 10 }} width={40} />
         <Tooltip />
         <Bar dataKey={dataKey} fill={fill} radius={[4, 4, 0, 0]} />
       </BarChart>

@@ -11,6 +11,7 @@ import { FilterSelect } from "@/components/ui/FilterSelect";
 import { Button } from "@/components/ui/button";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { ChartCard } from "@/components/infografis/ChartCard";
+import { InfografisKpiStrip } from "@/components/infografis/InfografisKpiStrip";
 import { InfografisTabBar } from "@/components/infografis/InfografisTabBar";
 import { IdmStatusHero } from "@/components/infografis/IdmStatusHero";
 import { SdgsGoalList } from "@/components/infografis/SdgsGoalList";
@@ -109,7 +110,8 @@ export function InfografisPageContent() {
         >
           {tab === "data-desa" && (
             <FadeIn>
-              <div className="grid gap-4 lg:grid-cols-2 lg:gap-6">
+              <InfografisKpiStrip />
+              <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-6">
                 <ChartCard
                   title="Wilayah Administratif"
                   subtitle="Data dusun hingga RT/RW"

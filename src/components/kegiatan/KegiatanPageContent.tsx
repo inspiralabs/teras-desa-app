@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import {
@@ -11,7 +10,6 @@ import {
   Newspaper,
   Search,
   Share2,
-  TrendingUp,
 } from "lucide-react";
 import {
   format,
@@ -27,20 +25,17 @@ import { PageContentBoundary } from "@/components/layout/PageContentBoundary";
 import { PageHero } from "@/components/layout/PageHero";
 import { SectionShell, SectionCard } from "@/components/ui/SectionShell";
 import { FadeIn } from "@/components/motion/FadeIn";
+import { BeritaPortalLayout } from "@/components/berita/BeritaPortalLayout";
 import { Badge } from "@/components/ui/badge";
 import { FilterSelect } from "@/components/ui/FilterSelect";
 import { NewsFilterBar } from "@/components/ui/NewsFilterBar";
 import { Pagination, paginateItems } from "@/components/ui/Pagination";
 import { agendaList, type AgendaKategori } from "@/lib/mock-data/agenda";
-import {
-  beritaTerbaruSorted,
-  beritaTerpopuler,
-  type Berita,
-} from "@/lib/mock-data/berita";
+import { beritaTerbaruSorted, beritaTerpopuler } from "@/lib/mock-data/berita";
 import { cn } from "@/lib/utils";
 
 const AGENDA_PER_PAGE = 4;
-const BERITA_PER_PAGE = 6;
+const BERITA_GRID_PAGE_SIZE = 6;
 
 const KATEGORI_AGENDA: (AgendaKategori | "Semua")[] = [
   "Semua",
@@ -82,56 +77,6 @@ function shareMock(title: string) {
   }
 }
 
-function BeritaCard({ b, large }: { b: Berita; large?: boolean }) {
-  return (
-    <Link
-      href={`/kegiatan/${b.slug}`}
-      className={cn(
-        "group overflow-hidden rounded-xl border border-mid-gray/35 bg-white shadow-[var(--shadow-card)] transition hover:-translate-y-0.5 hover:shadow-[var(--shadow-card-hover)]",
-        large && "md:grid md:grid-cols-2"
-      )}
-    >
-      <div
-        className={cn(
-          "relative aspect-video",
-          large && "md:aspect-auto md:min-h-full"
-        )}
-      >
-        <Image
-          src={b.gambar}
-          alt=""
-          fill
-          className="object-cover transition duration-300 group-hover:scale-[1.02]"
-          sizes={large ? "50vw" : "400px"}
-        />
-      </div>
-      <div className={cn("p-4", large && "flex flex-col justify-center md:p-6")}>
-        <Badge>{b.kategori}</Badge>
-        <h3
-          className={cn(
-            "mt-2 font-semibold text-primary group-hover:text-secondary",
-            large ? "text-xl line-clamp-3" : "line-clamp-2"
-          )}
-        >
-          {b.judul}
-        </h3>
-        <p className="mt-1 text-xs text-dark-gray">
-          {format(parseISO(b.tanggal), "d MMMM yyyy", { locale: localeId })} ·{" "}
-          {b.views} dibaca
-        </p>
-        <p
-          className={cn(
-            "mt-2 text-dark-gray",
-            large ? "line-clamp-4 text-sm" : "line-clamp-2 text-sm"
-          )}
-        >
-          {b.ringkasan}
-        </p>
-      </div>
-    </Link>
-  );
-}
-
 export function KegiatanPageContent() {
   const [viewAgenda, setViewAgenda] = useState<"grid" | "kalender">("grid");
   const [katAgenda, setKatAgenda] = useState("Semua");
@@ -170,22 +115,16 @@ export function KegiatanPageContent() {
     [filteredAgenda, agendaPage]
   );
 
-  const beritaPaginated = useMemo(
-    () => paginateItems(filteredBerita, beritaPage, BERITA_PER_PAGE),
-    [filteredBerita, beritaPage]
+  /** Grid halaman — tetap saat carousel headline bergeser */
+  const gridBerita = useMemo(() => {
+    const start = (beritaPage - 1) * BERITA_GRID_PAGE_SIZE;
+    return filteredBerita.slice(start, start + BERITA_GRID_PAGE_SIZE);
+  }, [filteredBerita, beritaPage]);
+
+  const beritaGridTotalPages = useMemo(
+    () => Math.max(1, Math.ceil(filteredBerita.length / BERITA_GRID_PAGE_SIZE)),
+    [filteredBerita.length]
   );
-
-  const featuredBerita =
-    beritaPage === 1 && beritaPaginated.items.length > 0
-      ? beritaPaginated.items[0]
-      : null;
-  const gridBerita =
-    featuredBerita && beritaPaginated.items.length > 1
-      ? beritaPaginated.items.slice(1)
-      : beritaPaginated.items;
-
-  const populerList = beritaTerpopuler.slice(0, 8);
-  const terbaruList = beritaTerbaruSorted.slice(0, 8);
 
   useEffect(() => {
     setAgendaPage(1);
@@ -202,10 +141,10 @@ export function KegiatanPageContent() {
   }, [agendaPage, agendaPaginated.totalPages, agendaPaginated.safePage]);
 
   useEffect(() => {
-    if (beritaPage > beritaPaginated.totalPages) {
-      setBeritaPage(beritaPaginated.safePage);
+    if (beritaPage > beritaGridTotalPages) {
+      setBeritaPage(beritaGridTotalPages);
     }
-  }, [beritaPage, beritaPaginated.totalPages, beritaPaginated.safePage]);
+  }, [beritaPage, beritaGridTotalPages]);
 
   const calMonth = parseISO(`${bulanAgenda}-01`);
   const calDays = eachDayOfInterval({
@@ -437,9 +376,7 @@ export function KegiatanPageContent() {
             </span>
           </div>
 
-          <div className="grid gap-8 xl:grid-cols-[minmax(0,1fr)_300px] xl:items-start">
-            <div className="min-w-0 space-y-6">
-              <NewsFilterBar>
+          <NewsFilterBar className="mb-6">
                 <div className="relative min-w-0 flex-[2]">
                   <label className="text-xs font-semibold text-primary">
                     Cari berita
@@ -468,88 +405,25 @@ export function KegiatanPageContent() {
                   options={TAHUN_BERITA_OPTIONS}
                   className="w-full sm:max-w-[140px]"
                 />
-              </NewsFilterBar>
+          </NewsFilterBar>
 
-              {filteredBerita.length === 0 ? (
-                <p className="py-12 text-center text-sm text-dark-gray">
-                  Tidak ada berita yang cocok dengan filter.
-                </p>
-              ) : (
-                <>
-                  {featuredBerita ? (
-                    <div>
-                      <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-secondary">
-                        Berita utama
-                      </p>
-                      <BeritaCard b={featuredBerita} large />
-                    </div>
-                  ) : null}
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    {gridBerita.map((b) => (
-                      <BeritaCard key={b.id} b={b} />
-                    ))}
-                  </div>
-                  <Pagination
-                    page={beritaPaginated.safePage}
-                    totalPages={beritaPaginated.totalPages}
-                    onPageChange={setBeritaPage}
-                  />
-                </>
-              )}
-            </div>
-
-            <aside className="space-y-6 xl:sticky xl:top-24">
-              <SectionCard>
-                <div className="flex items-center gap-2">
-                  <TrendingUp className="h-4 w-4 text-accent" />
-                  <h3 className="text-sm font-bold text-primary">Terpopuler</h3>
-                </div>
-                <ul className="mt-4 max-h-[420px] space-y-3 overflow-y-auto pr-1">
-                  {populerList.map((b, i) => (
-                    <li
-                      key={b.id}
-                      className="border-b border-mid-gray/20 pb-3 last:border-0 last:pb-0"
-                    >
-                      <Link
-                        href={`/kegiatan/${b.slug}`}
-                        className="text-sm font-medium leading-snug text-primary hover:text-secondary"
-                      >
-                        <span className="mr-1 font-bold text-accent">{i + 1}.</span>
-                        {b.judul}
-                      </Link>
-                      <p className="mt-0.5 text-xs text-dark-gray">
-                        {b.views} dibaca · {b.kategori}
-                      </p>
-                    </li>
-                  ))}
-                </ul>
-              </SectionCard>
-
-              <SectionCard>
-                <h3 className="text-sm font-bold text-primary">Terbaru</h3>
-                <ul className="mt-4 max-h-[420px] space-y-3 overflow-y-auto pr-1">
-                  {terbaruList.map((b) => (
-                    <li
-                      key={b.id}
-                      className="border-b border-mid-gray/20 pb-3 last:border-0 last:pb-0"
-                    >
-                      <Link
-                        href={`/kegiatan/${b.slug}`}
-                        className="text-sm font-medium leading-snug text-primary hover:text-secondary"
-                      >
-                        {b.judul}
-                      </Link>
-                      <p className="mt-0.5 text-xs text-dark-gray">
-                        {format(parseISO(b.tanggal), "d MMM yyyy", {
-                          locale: localeId,
-                        })}
-                      </p>
-                    </li>
-                  ))}
-                </ul>
-              </SectionCard>
-            </aside>
-          </div>
+          <BeritaPortalLayout
+            headlineItems={filteredBerita}
+            gridItems={gridBerita}
+            terbaruSidebarItems={filteredBerita}
+            populerSidebarItems={beritaTerpopuler}
+            headlineBadge="Berita utama"
+            emptyMessage="Tidak ada berita yang cocok dengan filter."
+            pagination={
+              filteredBerita.length > BERITA_GRID_PAGE_SIZE
+                ? {
+                    page: beritaPage,
+                    totalPages: beritaGridTotalPages,
+                    onPageChange: setBeritaPage,
+                  }
+                : undefined
+            }
+          />
         </FadeIn>
       </SectionShell>
     </PageContentBoundary>
