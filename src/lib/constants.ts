@@ -8,7 +8,7 @@ export const DESA = {
   kodeWilayah: "32.01.02.2002",
   kepalaDesa: "Firman Riansyah, S.E.",
   jabatanKepalaDesa: "Kepala Desa Bojongkulur",
-  email: "info@desabojongkulur.id",
+  email: "bojongkulurdesa@gmail.com",
   telepon: "(021) 82771919",
   jamPelayanan: "08.00–15.00 WIB",
   mapsUrl: "https://maps.app.goo.gl/dCLx3RrrSPacCVTi9",
