@@ -14,7 +14,8 @@ function isDesaKamiActive(pathname: string) {
   return (
     pathname === "/desa-kami" ||
     pathname === "/lembaga-desa" ||
-    pathname === "/data-desa"
+    pathname === "/produk-hukum" ||
+    pathname === "/apbdes"
   );
 }
 

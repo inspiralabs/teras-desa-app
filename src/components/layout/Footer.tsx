@@ -1,12 +1,27 @@
 import Link from "next/link";
-import { DESA, FOOTER_QUICK_LINKS } from "@/lib/constants";
+import Image from "next/image";
+import {
+  DESA,
+  FOOTER_QUICK_LINKS_COL1,
+  FOOTER_QUICK_LINKS_COL2,
+} from "@/lib/constants";
+import { IMAGES } from "@/lib/images";
 
 export function Footer() {
   return (
     <footer className="mt-auto border-t border-mid-gray/30 bg-primary text-white">
       <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 md:grid-cols-2 lg:grid-cols-4 md:px-6">
         <div>
-          <p className="text-lg font-bold">SIGAP DESA</p>
+          <div className="flex items-center gap-3">
+            <Image
+              src={IMAGES.lambangKabupaten}
+              alt="Lambang Kabupaten Bogor"
+              width={44}
+              height={44}
+              className="rounded-full bg-white/10 p-0.5"
+            />
+            <p className="text-lg font-bold">SIGAP DESA</p>
+          </div>
           <p className="mt-2 text-sm text-white/80">
             Sistem Informasi Gerak Aktif Pelayanan Desa - mendekatkan pemerintah
             desa kepada warga melalui layanan digital.
@@ -14,15 +29,26 @@ export function Footer() {
         </div>
         <div>
           <p className="font-semibold">Tautan Cepat</p>
-          <ul className="mt-3 space-y-2 text-sm text-white/85">
-            {FOOTER_QUICK_LINKS.map((item) => (
-              <li key={item.href}>
-                <Link href={item.href} className="hover:underline">
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <div className="mt-3 grid grid-cols-2 gap-x-8 gap-y-2 text-sm text-white/85">
+            <ul className="space-y-2">
+              {FOOTER_QUICK_LINKS_COL1.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className="hover:text-white hover:underline">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <ul className="space-y-2">
+              {FOOTER_QUICK_LINKS_COL2.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className="hover:text-white hover:underline">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
         <div>
           <p className="font-semibold">Pemerintah Desa {DESA.nama}</p>
@@ -49,7 +75,6 @@ export function Footer() {
             rel="noopener noreferrer"
             className="mt-2 inline-block text-sm underline"
           >
-            Petunjuk Arah
           </a>
         </div>
       </div>
@@ -58,8 +83,14 @@ export function Footer() {
           <p className="text-center sm:text-left">
             Copyright © 2026 Pemerintah Desa {DESA.nama}
           </p>
-          <p className="text-center sm:text-right">
-            Developed by{" "}
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 sm:justify-end">
+            <Link href="/kebijakan-privasi" className="hover:text-white">
+              Kebijakan Privasi
+            </Link>
+            <Link href="/syarat-ketentuan" className="hover:text-white">
+              Syarat & Ketentuan
+            </Link>
+            <span aria-hidden>·</span>
             <a
               href="https://inspiralabs.id"
               target="_blank"
@@ -68,7 +99,7 @@ export function Footer() {
             >
               InspiraLabs – Nawa Inspira Digital
             </a>
-          </p>
+          </div>
         </div>
       </div>
     </footer>

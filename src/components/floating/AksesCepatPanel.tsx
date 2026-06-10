@@ -13,14 +13,14 @@ const ITEMS = [
     color: "bg-primary/10 text-primary",
   },
   {
-    href: "/data-desa",
+    href: "/infografis?tab=data-desa",
     label: "Data Desa",
     desc: "Statistik dan visualisasi data desa",
     icon: BarChart3,
     color: "bg-secondary/10 text-secondary",
   },
   {
-    href: "/data-desa",
+    href: "/apbdes",
     label: "Publikasi Desa",
     desc: "Laporan keuangan dan program kerja",
     icon: FileText,

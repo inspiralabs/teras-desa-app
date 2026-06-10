@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { LayananTabs } from "@/components/layanan/LayananTabs";
+import { LayananShell } from "@/components/layanan/LayananShell";
 import { PageHero } from "@/components/layout/PageHero";
 import { PageContentBoundary } from "@/components/layout/PageContentBoundary";
 import { SectionShell, SectionCard } from "@/components/ui/SectionShell";
@@ -19,7 +19,7 @@ export default function LayananPage() {
         <FadeIn>
           <SectionCard>
             <Suspense fallback={<SectionSkeleton variant="layanan" />}>
-              <LayananTabs />
+              <LayananShell />
             </Suspense>
           </SectionCard>
         </FadeIn>

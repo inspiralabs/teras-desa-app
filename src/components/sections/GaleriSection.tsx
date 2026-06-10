@@ -3,6 +3,7 @@
 import { SafeImage } from "@/components/ui/SafeImage";
 import { IMAGES } from "@/lib/images";
 import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 import { useCallback, useEffect, useState } from "react";
 import { SectionShell, SectionCard } from "@/components/ui/SectionShell";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -14,7 +15,7 @@ export function GaleriSection() {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
     align: "start",
-  });
+  }, [Autoplay({ delay: 3500, stopOnInteraction: false })]);
   const [selected, setSelected] = useState(0);
 
   const onSelect = useCallback(() => {
@@ -34,6 +35,8 @@ export function GaleriSection() {
         <SectionHeader
           title="Galeri Desa"
           subtitle="Dokumentasi kegiatan, fasilitas, dan informasi untuk masyarakat Desa Bojongkulur."
+          href="/galeri"
+          linkLabel="Lihat Semua Foto"
         />
         <SectionCard className="relative p-4 md:p-6">
           <div className="overflow-hidden rounded-xl" ref={emblaRef}>
