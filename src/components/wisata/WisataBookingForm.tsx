@@ -97,7 +97,7 @@ export function WisataBookingForm() {
         `Jam: ${jam}\n` +
         `Kategori: ${kategori}\n` +
         `Jumlah: ${peserta} orang\n` +
-        `(Mock SIGAP DESA)`
+        `(Mock TERAS Desa)`
     );
     window.open(`https://wa.me/${WA_BOOKING}?text=${msg}`, "_blank");
     toast.success("Membuka WhatsApp untuk konfirmasi booking (mock)");

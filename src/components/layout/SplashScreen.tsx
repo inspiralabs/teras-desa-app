@@ -5,7 +5,7 @@ import Image from "next/image";
 import { m } from "motion/react";
 import { JumpingDots } from "@/components/motion/JumpingDots";
 import { IMAGES } from "@/lib/images";
-import { DESA } from "@/lib/constants";
+import { DESA, SITE_NAME } from "@/lib/constants";
 import {
   SPLASH_FADE_OUT_MS,
   SPLASH_MAX_WAIT_MS,
@@ -47,7 +47,7 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
       transition={{ duration: SPLASH_FADE_OUT_MS / 1000, ease: "easeInOut" }}
       role="status"
       aria-live="polite"
-      aria-label="Memuat SIGAP DESA"
+      aria-label={`Memuat ${SITE_NAME}`}
     >
       <m.div
         initial={{ scale: 0.9, opacity: 0 }}
@@ -63,7 +63,7 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
           className="rounded-full"
           priority
         />
-        <p className="mt-4 text-xl font-bold text-primary">SIGAP DESA</p>
+        <p className="mt-4 text-xl font-bold text-primary">{SITE_NAME}</p>
         <p className="mt-1 text-sm text-dark-gray">
           Desa {DESA.nama} · Kab. {DESA.kabupaten}
         </p>

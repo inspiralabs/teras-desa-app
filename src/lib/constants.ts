@@ -16,10 +16,21 @@ export const DESA = {
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.0!2d106.9689!3d-6.3229!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMTknMjIuNCJTIDEwNsKwNTgnMDguMSJF!5e0!3m2!1sid!2sid!4v1",
 } as const;
 
-export const SITE_TITLE = "SIGAP DESA | Desa Bojongkulur";
+export const SITE_NAME = "TERAS Desa";
+
+/** Kepanjangan resmi: Tempat E-layanan & Registrasi Administrasi Sipil Desa */
+export const SITE_ACRONYM_EXPANSION =
+  "Tempat E-layanan & Registrasi Administrasi Sipil Desa";
+
+export const SITE_TITLE = `${SITE_NAME} | Desa Bojongkulur`;
+
+export const SITE_DESCRIPTION = `${SITE_NAME} Bojongkulur — ${SITE_ACRONYM_EXPANSION}. Berita, agenda, dan transparansi pemerintahan desa.`;
+
+export const SITE_TAGLINE =
+  "E-layanan dan registrasi administrasi sipil desa dalam satu platform digital";
 
 export const HERO_TAGLINE =
-  "Platform digital layanan desa — mendekatkan pemerintah desa kepada warga";
+  "Satu tempat untuk e-layanan administrasi sipil, informasi, dan aspirasi warga";
 
 /** Sub-menu PRD v2 §3.1 — di bawah Desa Kami */
 export const DESA_KAMI_SUBMENU = [

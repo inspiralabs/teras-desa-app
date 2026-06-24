@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { IMAGES } from "@/lib/images";
-import { DESA } from "@/lib/constants";
+import { DESA, SITE_NAME } from "@/lib/constants";
 
 /** Placeholder statis (SSR) — tampil via CSS saat html.splash-active */
 export function SplashPlaceholder() {
@@ -19,7 +19,7 @@ export function SplashPlaceholder() {
           className="rounded-full"
           priority
         />
-        <p className="mt-4 text-xl font-bold text-primary">SIGAP DESA</p>
+        <p className="mt-4 text-xl font-bold text-primary">{SITE_NAME}</p>
         <p className="mt-1 text-sm text-dark-gray">
           Desa {DESA.nama} · Kab. {DESA.kabupaten}
         </p>

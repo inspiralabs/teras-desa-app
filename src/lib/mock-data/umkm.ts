@@ -806,12 +806,12 @@ const KATALOG: TokoInput[] = [
     produk: [
       {
         namaProduk: "Kaos Desa Bojongkulur",
-        deskripsi: "Kaos cotton combed dengan logo SIGAP DESA. Ukuran S–XXL, cocok untuk oleh-oleh wisatawan.",
+        deskripsi: "Kaos cotton combed dengan logo TERAS Desa. Ukuran S–XXL, cocok untuk oleh-oleh wisatawan.",
         harga: 85000,
         gambar: IMG.kaosDesa,
       },
       {
-        namaProduk: "Mug Keramik SIGAP DESA",
+        namaProduk: "Mug Keramik TERAS Desa",
         deskripsi: "Mug keramik 350 ml bergambar Susur Sungai Cikeas. Tahan panas, aman dishwasher.",
         harga: 55000,
         gambar: IMG.mugDesa,
@@ -835,7 +835,7 @@ const KATALOG: TokoInput[] = [
         gambar: IMG.postCard,
       },
       {
-        namaProduk: "Tote Bag Kanvas SIGAP",
+        namaProduk: "Tote Bag Kanvas TERAS",
         deskripsi: "Tote bag kanvas tebal bertuliskan Desa Bojongkulur. Muat oleh-oleh pasar desa dengan aman.",
         harga: 75000,
         gambar: IMG.toteBag,
@@ -847,7 +847,7 @@ const KATALOG: TokoInput[] = [
         gambar: IMG.miniaturSungai,
       },
       {
-        namaProduk: "Stiker Pack SIGAP DESA",
+        namaProduk: "Stiker Pack TERAS Desa",
         deskripsi: "10 stiker vinyl tahan air — logo desa, pemandangan, dan ikon layanan publik.",
         harga: 20000,
         gambar: IMG.sticker,

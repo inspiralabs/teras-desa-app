@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SITE_NAME } from "@/lib/constants";
 import { FileText, Receipt, HandCoins } from "lucide-react";
 import { SectionShell } from "@/components/ui/SectionShell";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -13,7 +14,7 @@ const LANGKAH = [
   },
   {
     title: "Ajukan Online/Offline",
-    desc: "Melalui menu Layanan di website SIGAP DESA atau datang langsung ke kantor desa pada jam pelayanan.",
+    desc: `Melalui menu Layanan di website ${SITE_NAME} atau datang langsung ke kantor desa pada jam pelayanan.`,
   },
   {
     title: "Verifikasi Berkas",

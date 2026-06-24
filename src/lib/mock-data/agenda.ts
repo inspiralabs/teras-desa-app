@@ -88,7 +88,7 @@ export const agendaList: Agenda[] = [
   },
   {
     id: "5",
-    judul: "Pelatihan SIGAP DESA untuk Perangkat",
+    judul: "Pelatihan TERAS Desa untuk Perangkat",
     deskripsi: "Sosialisasi layanan digital desa kepada perangkat dan kader.",
     tanggal: "2026-05-22",
     jam: "13:00",

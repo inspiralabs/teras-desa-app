@@ -4,6 +4,9 @@ import {
   DESA,
   FOOTER_QUICK_LINKS_COL1,
   FOOTER_QUICK_LINKS_COL2,
+  SITE_ACRONYM_EXPANSION,
+  SITE_NAME,
+  SITE_TAGLINE,
 } from "@/lib/constants";
 import { IMAGES } from "@/lib/images";
 
@@ -20,11 +23,10 @@ export function Footer() {
               height={44}
               className="rounded-full bg-white/10 p-0.5"
             />
-            <p className="text-lg font-bold">SIGAP DESA</p>
+            <p className="text-lg font-bold">{SITE_NAME}</p>
           </div>
           <p className="mt-2 text-sm text-white/80">
-            Sistem Informasi Gerak Aktif Pelayanan Desa - mendekatkan pemerintah
-            desa kepada warga melalui layanan digital.
+            {SITE_ACRONYM_EXPANSION}. {SITE_TAGLINE} melalui layanan digital.
           </p>
         </div>
         <div>

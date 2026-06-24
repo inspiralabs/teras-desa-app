@@ -26,7 +26,7 @@ export const DESA_GPS = {
 
 export const SEJARAH_DESA = `Desa Bojongkulur berdiri sejak masa kolonial sebagai pemukiman agraris di pinggiran aliran Sungai Cikeas. Nama "Bojongkulur" dipercaya berasal dari hutan bambu (bojong) yang rimbun dan tanah subur (kulur) yang menjadi pusat pertanian warga.
 
-Seiring perkembangan wilayah metropolitan Bekasi, desa ini bertransformasi menjadi pemukiman padat dengan potensi wisata susur sungai, UMKM, dan layanan administrasi desa digital melalui SIGAP DESA.`;
+Seiring perkembangan wilayah metropolitan Bekasi, desa ini bertransformasi menjadi pemukiman padat dengan potensi wisata susur sungai, UMKM, dan layanan administrasi desa digital melalui TERAS Desa.`;
 
 export const TIMELINE_KADES = [
   { tahun: "1985–1998", nama: "H. Ahmad Suryadi" },

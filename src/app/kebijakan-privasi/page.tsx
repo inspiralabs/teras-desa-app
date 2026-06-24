@@ -1,3 +1,4 @@
+import { SITE_NAME } from "@/lib/constants";
 import { PageContentBoundary } from "@/components/layout/PageContentBoundary";
 import { PageHero } from "@/components/layout/PageHero";
 import { SectionShell, SectionCard } from "@/components/ui/SectionShell";
@@ -12,7 +13,7 @@ export default function KebijakanPrivasiPage() {
         <SectionCard className="prose prose-sm max-w-none text-dark-gray">
           <p>
             Pemerintah Desa Bojongkulur berkomitmen melindungi data pribadi warga
-            yang disampaikan melalui SIGAP DESA. NIK, nomor telepon, dan data
+            yang disampaikan melalui {SITE_NAME}. NIK, nomor telepon, dan data
             sensitif lainnya dienkripsi dan tidak dipublikasikan.
           </p>
           <p className="mt-4">

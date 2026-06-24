@@ -1,3 +1,4 @@
+import { SITE_NAME } from "@/lib/constants";
 import { PageContentBoundary } from "@/components/layout/PageContentBoundary";
 import { PageHero } from "@/components/layout/PageHero";
 import { SectionShell, SectionCard } from "@/components/ui/SectionShell";
@@ -11,7 +12,7 @@ export default function SyaratKetentuanPage() {
       <SectionShell className="pt-0">
         <SectionCard className="prose prose-sm max-w-none text-dark-gray">
           <p>
-            Dengan menggunakan website SIGAP DESA, Anda setuju menggunakan layanan
+            Dengan menggunakan website {SITE_NAME}, Anda setuju menggunakan layanan
             ini secara bertanggung jawab dan hanya untuk keperluan yang sah
             terkait layanan publik desa.
           </p>

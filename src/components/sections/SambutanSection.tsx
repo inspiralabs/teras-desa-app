@@ -7,7 +7,7 @@ import { DESA } from "@/lib/constants";
 import { IMAGES } from "@/lib/images";
 
 const SAMBUTAN_RINGKAS =
-  "Assalamu'alaikum warahmatullahi wabarakatuh. Puji syukur kita panjatkan ke hadirat Allah SWT. Sebagai Kepala Desa Bojongkulur, saya mengajak seluruh warga untuk memanfaatkan SIGAP DESA sebagai jembatan layanan dan komunikasi dengan pemerintah desa. Mari bersama membangun desa yang lebih transparan dan responsif.";
+  "Assalamu'alaikum warahmatullahi wabarakatuh. Puji syukur kita panjatkan ke hadirat Allah SWT. Sebagai Kepala Desa Bojongkulur, saya mengajak seluruh warga untuk memanfaatkan TERAS Desa sebagai tempat e-layanan dan registrasi administrasi sipil — sekaligus ruang komunikasi dengan pemerintah desa. Mari bersama membangun desa yang lebih transparan dan responsif.";
 
 export function SambutanSection() {
   return (

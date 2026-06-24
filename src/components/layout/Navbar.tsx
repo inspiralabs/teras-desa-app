@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { useState, useRef, useEffect } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { m, AnimatePresence, useReducedMotion } from "motion/react";
-import { DESA, NAV_ITEMS } from "@/lib/constants";
+import { DESA, NAV_ITEMS, SITE_NAME } from "@/lib/constants";
 import { IMAGES } from "@/lib/images";
 import { cn } from "@/lib/utils";
 
@@ -50,7 +50,7 @@ export function Navbar() {
           />
           <div className="leading-tight">
             <span className="text-base font-bold tracking-tight md:text-lg">
-              SIGAP DESA
+              {SITE_NAME}
             </span>
             <span className="block text-xs text-white/80">
               Desa {DESA.nama} · Kab. {DESA.kabupaten}

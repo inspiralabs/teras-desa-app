@@ -4,6 +4,7 @@ import { useState } from "react";
 import { AnimatedModal } from "@/components/motion/AnimatedModal";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import { SITE_NAME } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 const EMOJI_OPTIONS = [
@@ -51,7 +52,7 @@ export function PenilaianModal({
       <div className="space-y-6">
         <div>
           <p className="text-sm text-dark-gray">
-            Seberapa puas Anda dengan website SIGAP DESA?
+            Seberapa puas Anda dengan website {SITE_NAME}?
           </p>
           <div className="mt-3 flex flex-wrap justify-center gap-2">
             {EMOJI_OPTIONS.map(({ emoji, label }) => (
@@ -104,7 +105,7 @@ export function PenilaianModal({
 
         <div>
           <label className="text-sm text-dark-gray">
-            Kritik dan saran Anda untuk website SIGAP DESA{" "}
+            Kritik dan saran Anda untuk website {SITE_NAME}{" "}
             <span className="text-error">*</span>
           </label>
           <textarea
@@ -117,8 +118,8 @@ export function PenilaianModal({
 
         <div>
           <label className="text-sm text-dark-gray">
-            Fitur apa yang Anda inginkan namun belum tersedia di website SIGAP
-            DESA? <span className="text-error">*</span>
+            Fitur apa yang Anda inginkan namun belum tersedia di website{" "}
+            {SITE_NAME}? <span className="text-error">*</span>
           </label>
           <textarea
             className="mt-2 w-full rounded-lg border border-mid-gray px-3 py-2 text-sm"

@@ -1,6 +1,6 @@
-# SIGAP DESA — App
+# TERAS Desa — App
 
-Sistem Informasi Gerak Aktif Pelayanan Desa — Desa Bojongkulur.
+Tempat E-layanan & Registrasi Administrasi Sipil Desa — Desa Bojongkulur.
 
 ## Struktur
 
